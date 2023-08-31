@@ -1,0 +1,20 @@
+api.custom_expose_all:
+  path: '/api-controller'
+  defaults:
+    _controller: 'Drupal\api\Controller\ApiController::build'
+  requirements:
+    _permission: 'access content'
+
+api.custom_expose_limited:
+  path: '/api-controller/{parameter}'
+  defaults:
+    _controller: 'Drupal\api\Controller\ApiController::buildOnParameter'
+  requirements:
+    _permission: 'access content'
+
+api.custom_expose_double:
+  path: '/api-controller/{parameter1}/{parameter2}'
+  defaults:
+    _controller: 'Drupal\api\Controller\ApiController::buildOnDoubleParameter'
+  requirements:
+    _permission: 'access content'

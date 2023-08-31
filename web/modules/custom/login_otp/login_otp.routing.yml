@@ -1,0 +1,7 @@
+login_otp.otp_page:
+  path: '/otp_validation/{uid}'
+  defaults:
+    _form: 'Drupal\login_otp\Form\OtpValidation'
+    _title: 'OTP Validation Page'
+  requirements:
+    _permission: 'access content'

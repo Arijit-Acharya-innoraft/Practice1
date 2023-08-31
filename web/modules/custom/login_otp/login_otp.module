@@ -1,0 +1,140 @@
+<?php
+
+/**
+ * @file
+ * Implemets the otp functionality.
+ *
+ * It adds a field in the login form,generates the otp,sends via email and
+ *  enters the data in the database.
+ */
+
+use Drupal\Core\Database\Database;
+use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
+/**
+ * Implements hook_form__alter().
+ */
+function login_otp_form_alter(array &$form, FormStateInterface $formState, $formId) {
+  if ($formId == 'user_login_form') {
+    $form['name']['#title'] = t('Full Name');
+    $form['name']['#description'] = t('Enter your full name.');
+
+    $form['email'] = [
+      '#type' => 'email',
+      '#title' => 'Email',
+      '#required' => TRUE,
+      '#description' => 'Enter your mail',
+    ];
+    $form['actions']['submit']['#submit'][] = 'custom_submit_method';
+
+    return $form;
+  }
+}
+
+/**
+ *
+ */
+function custom_submit_method(array &$form, FormStateInterface $formState) {
+  $email = $formState->getValue('email');
+  $query = Database::getConnection()->select('users_field_data', 'u');
+  $uids = $query->fields('u', ['uid'])
+    ->condition('u.mail', $email)
+    ->execute()
+    ->fetchCol();
+  $uid = $uids[0];
+  $store = generate();
+  $otp = $store[0];
+  $created = $store[1];
+
+  // Checking if the uid already exists.
+  $query = Database::getConnection()->select('otp_table', 'ot');
+  $results = $query->fields('ot', ['created'])
+    ->condition('uid', $uid)
+    ->execute()
+    ->fetchAll();
+  if (($results[0]->created) == NULL) {
+    insertData($otp, $created, $uid);
+  }
+  else {
+    alterData($otp, $created, $uid);
+  }
+  send_mail($otp, $email);
+  $response = new RedirectResponse('/otp_validation/' . $uid);
+  $response->send();
+}
+
+/**
+ *
+ */
+function generate() {
+  $otp = rand(1000, 9999);
+  $time = time();
+  return [$otp, $time];
+}
+
+/**
+ *
+ */
+function insertData($otp, $created, $uid) {
+  $values = [
+    'uid' => $uid,
+    'otp' => $otp,
+    'created' => $created,
+    'matched' => 0,
+  ];
+
+  \Drupal::database()->insert('otp_table')
+    ->fields($values)
+    ->execute();
+}
+
+/**
+ *
+ */
+function alterData($otp, $created, $uid) {
+  $values = [
+    'otp' => $otp,
+    'created' => $created,
+    'matched' => 0,
+  ];
+
+  \Drupal::database()->update('otp_table')
+    ->fields($values)
+    ->execute();
+}
+
+/**
+ *
+ */
+function send_mail($otp, $email) {
+  $mailManager = \Drupal::service('plugin.manager.mail');
+  $module = 'login_otp';
+  $key = 'otp';
+  $to = $email;
+  $params['message'] = "Your Login Otp is" . $otp;
+  $params['subject'] = 'Login Otp';
+  $langcode = \Drupal::currentUser()->getPreferredLangcode();
+  $send = TRUE;
+
+  $result = $mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
+  if ($result['result'] !== TRUE) {
+    \Drupal::messenger()->addMessage(t('There was a problem sending your message and it was not sent.'), 'error');
+  }
+  else {
+    \Drupal::messenger()->addMessage(t('Your otp has been sent via email.'));
+  }
+
+}
+
+/**
+ * Implements hook_mail().
+ */
+function login_otp_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'otp':
+      $message['subject'] = t('@subject', ['@subject' => $params['title']]);
+      $message['body'][] = t('Message: @message', ['@message' => $params['message']]);
+      break;
+  }
+}

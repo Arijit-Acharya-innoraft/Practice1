@@ -1,0 +1,5 @@
+name: Custom Api
+description: 'Building of a custom api'
+type: module
+core_version_requirement: ^10
+package: Custom package

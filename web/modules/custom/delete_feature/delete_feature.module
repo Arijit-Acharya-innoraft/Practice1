@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * @file
+ * Implements delete feature on cron run .
+ */
+
+/**
+ * Implements hook_cron().
+ */
+function delete_feature_cron() {
+  $current_date = date('Y-m-d');
+  $one_day = 86400;
+  // Checking the event date of the nodes having notice content type
+  // Deleting those nodes whose event has already occured.
+  $notice_events = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'notice']);
+  foreach ($notice_events as $notice_event) {
+    $nid = $notice_event->nid->value;
+    $event_date = $notice_event->field_event_date->value;
+    $diff = strtotime($event_date) - strtotime($current_date);
+    if ($diff < 0) {
+      $notice_event->delete();
+    }
+  }
+
+  // Deleting the accounts of the users who are graduated.
+  $user_storage = \Drupal::entityTypeManager()->getStorage('user');
+  $query = $user_storage->getQuery();
+  $uids = $query
+    ->accessCheck(FALSE)
+    ->condition('status', '1')
+    ->condition('roles', 'students')
+    ->execute();
+  $users = $user_storage->loadMultiple($uids);
+  foreach ($users as $user) {
+    $passing_year = $user->field_passing_year->value;
+    $diff = (strtotime($passing_year) - strtotime($current_date));
+    if ($diff >= 180 * $one_day) {
+      $user->delete();
+    }
+  }
+
+}

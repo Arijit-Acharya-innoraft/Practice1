@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * @file
+ * Builds a table for storing the otp data.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function login_otp_schema() {
+
+  $schema['otp_table'] = [
+    'description' => 'Table for storing the details of the otp',
+    'fields' => [
+      'uid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+
+      'otp' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+
+      'created' => [
+        'type' => 'int',
+        'not null' => TRUE,
+       // 'mysql_type' => 'int',
+        'description' => 'Date and time of creation',
+      ],
+
+      'matched' => [
+        'type' => 'int',
+        'default' => 0,
+        'not null' => TRUE,
+        'description' => 'Boolean field: 0 for unpublished, 1 for published',
+      ],
+    ],
+
+    'primary key' => [
+      'uid',
+    ],
+  ];
+  return $schema;
+
+}
