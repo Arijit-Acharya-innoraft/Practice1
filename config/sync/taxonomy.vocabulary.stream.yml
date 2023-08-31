@@ -1,0 +1,8 @@
+uuid: 956181b5-921f-4c11-b3b4-a2b44c9e31bc
+langcode: en-gb
+status: true
+dependencies: {  }
+name: Stream
+vid: stream
+description: 'Enter the names of the streams that a student can persue'
+weight: 0

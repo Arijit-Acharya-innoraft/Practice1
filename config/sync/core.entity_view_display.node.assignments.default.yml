@@ -1,0 +1,42 @@
+uuid: 8babefbc-1234-4167-8a01-41d515a1ee12
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.node.assignments.body
+    - field.field.node.assignments.field_assignment_image
+    - node.type.assignments
+  module:
+    - image
+    - text
+    - user
+id: node.assignments.default
+targetEntityType: node
+bundle: assignments
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_assignment_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

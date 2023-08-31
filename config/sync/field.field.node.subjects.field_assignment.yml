@@ -1,0 +1,29 @@
+uuid: 2b44a34d-c18c-4359-8cf0-9560ac1c335b
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_assignment
+    - node.type.assignments
+    - node.type.subjects
+id: node.subjects.field_assignment
+field_name: field_assignment
+entity_type: node
+bundle: subjects
+label: Assignment
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      assignments: assignments
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

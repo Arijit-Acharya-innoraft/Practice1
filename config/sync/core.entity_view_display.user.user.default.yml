@@ -1,12 +1,18 @@
 uuid: 07d75b19-cbc3-47ee-a40b-ee022e94e69e
-langcode: en
+langcode: en-gb
 status: true
 dependencies:
   config:
+    - field.field.user.user.field_joining_year
+    - field.field.user.user.field_mobile_no
+    - field.field.user.user.field_passing_year
+    - field.field.user.user.field_stream
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
+    - datetime
     - image
+    - phone_number
     - user
 _core:
   default_config_hash: mZLyuWM9CQx2ZJVqFGSbzgFnHzudVbHBYmdU256A5Wk
@@ -15,19 +21,55 @@ targetEntityType: user
 bundle: user
 mode: default
 content:
-  member_for:
+  field_joining_year:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_mobile_no:
+    type: phone_number_international
+    label: above
+    settings:
+      as_link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_passing_year:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
     weight: 5
+    region: content
+  field_stream:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  member_for:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
     region: content
   user_picture:
     type: image
     label: hidden
     settings:
-      image_style: thumbnail
       image_link: content
+      image_style: thumbnail
       image_loading:
         attribute: lazy
     third_party_settings: {  }
-    weight: 0
+    weight: 1
     region: content
 hidden:
   langcode: true

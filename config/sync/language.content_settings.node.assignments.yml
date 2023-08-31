@@ -1,0 +1,11 @@
+uuid: 14ab0a50-f3b9-4f7e-93ed-424ddc7ce9a5
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - node.type.assignments
+id: node.assignments
+target_entity_type_id: node
+target_bundle: assignments
+default_langcode: site_default
+language_alterable: false

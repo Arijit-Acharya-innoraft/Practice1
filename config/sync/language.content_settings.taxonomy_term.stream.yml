@@ -1,0 +1,11 @@
+uuid: e32b7167-ff86-49ba-b705-b94f3e084459
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.stream
+id: taxonomy_term.stream
+target_entity_type_id: taxonomy_term
+target_bundle: stream
+default_langcode: site_default
+language_alterable: false

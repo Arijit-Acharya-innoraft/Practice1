@@ -1,0 +1,18 @@
+uuid: f8dfe087-5eda-4ecf-9ed1-12416fcb9892
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Subjects
+type: subjects
+description: 'Enter the list of all Subjects of a stream'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

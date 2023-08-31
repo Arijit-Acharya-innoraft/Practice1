@@ -1,0 +1,60 @@
+uuid: 68c2059d-d3f7-4916-982a-e87b35bc6109
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - node.type.assignments
+    - node.type.notice
+    - node.type.other_assets
+    - node.type.study_materials
+    - node.type.subjects
+    - taxonomy.vocabulary.stream
+  module:
+    - field_ui
+    - node
+    - system
+    - taxonomy
+    - toolbar
+id: academic_head
+label: 'Academic Head'
+weight: 5
+is_admin: null
+permissions:
+  - 'access content overview'
+  - 'access taxonomy overview'
+  - 'access toolbar'
+  - 'administer menu'
+  - 'administer node fields'
+  - 'administer taxonomy'
+  - 'administer taxonomy_term display'
+  - 'administer taxonomy_term fields'
+  - 'administer taxonomy_term form display'
+  - 'administer user fields'
+  - 'create assignments content'
+  - 'create notice content'
+  - 'create other_assets content'
+  - 'create study_materials content'
+  - 'create subjects content'
+  - 'create terms in stream'
+  - 'delete any assignments content'
+  - 'delete any notice content'
+  - 'delete any other_assets content'
+  - 'delete any study_materials content'
+  - 'delete any subjects content'
+  - 'delete own assignments content'
+  - 'delete own notice content'
+  - 'delete own other_assets content'
+  - 'delete own study_materials content'
+  - 'delete own subjects content'
+  - 'delete terms in stream'
+  - 'edit any assignments content'
+  - 'edit any notice content'
+  - 'edit any other_assets content'
+  - 'edit any study_materials content'
+  - 'edit any subjects content'
+  - 'edit own assignments content'
+  - 'edit own notice content'
+  - 'edit own other_assets content'
+  - 'edit own study_materials content'
+  - 'edit own subjects content'
+  - 'edit terms in stream'

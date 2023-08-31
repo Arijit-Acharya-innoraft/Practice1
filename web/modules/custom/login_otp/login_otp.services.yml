@@ -1,0 +1,4 @@
+services:
+  login_otp.my_service:
+    class: Drupal\login_otp\Services\OtpService
+    arguments: ['@database']

@@ -1,0 +1,5 @@
+name: Delete features
+description: 'This module is responsible for deleting old notices and graduate students details'
+type: module
+core_version_requirement: ^10
+package: Custom package

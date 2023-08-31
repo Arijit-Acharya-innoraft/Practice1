@@ -1,0 +1,21 @@
+uuid: bb45d3f0-b36e-4d8d-bf2b-b03737635053
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_stream
+field_name: field_stream
+entity_type: user
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

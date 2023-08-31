@@ -1,0 +1,29 @@
+uuid: 8fad3d21-a914-45d7-863c-d46617ee6c3d
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_study_materials
+    - node.type.study_materials
+    - node.type.subjects
+id: node.subjects.field_study_materials
+field_name: field_study_materials
+entity_type: node
+bundle: subjects
+label: 'Study materials'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      study_materials: study_materials
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

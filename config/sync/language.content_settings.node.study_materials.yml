@@ -1,0 +1,11 @@
+uuid: bc8436b4-cee8-4ff1-99e0-8cce92647ae0
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - node.type.study_materials
+id: node.study_materials
+target_entity_type_id: node
+target_bundle: study_materials
+default_langcode: site_default
+language_alterable: false

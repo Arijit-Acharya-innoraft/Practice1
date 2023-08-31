@@ -1,0 +1,5 @@
+name: Login Otp
+description: 'Assign Otp function on Login'
+type: module
+core_version_requirement: ^10
+package: Custom package

@@ -1,0 +1,29 @@
+uuid: 35f83119-3e32-46fb-b3a1-ba8f58d521ef
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.node.other_assets.body
+    - node.type.other_assets
+  module:
+    - text
+    - user
+id: node.other_assets.default
+targetEntityType: node
+bundle: other_assets
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

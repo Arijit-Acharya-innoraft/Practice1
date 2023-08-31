@@ -1,0 +1,14 @@
+uuid: a3d276c6-c17c-48a7-a35a-c3790781ea8e
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - user.role.students
+  module:
+    - user
+id: user_remove_role_action.students
+label: 'Remove the Students role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: students

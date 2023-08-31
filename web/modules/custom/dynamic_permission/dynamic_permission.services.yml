@@ -1,0 +1,6 @@
+services:
+  dynamic_permission.access_service:
+    class: Drupal\dynamic_permission\Services\PageAccessService
+    arguments: ['@access_manager']
+    tags:
+      - { name: service }

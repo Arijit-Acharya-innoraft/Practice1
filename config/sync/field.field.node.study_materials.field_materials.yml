@@ -1,0 +1,27 @@
+uuid: b45fa03b-6202-45a3-99fd-649571763b01
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_materials
+    - node.type.study_materials
+  module:
+    - file
+id: node.study_materials.field_materials
+field_name: field_materials
+entity_type: node
+bundle: study_materials
+label: materials
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: txt
+  max_filesize: 10MB
+  description_field: false
+field_type: file

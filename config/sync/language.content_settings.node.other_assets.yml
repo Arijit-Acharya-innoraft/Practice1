@@ -1,0 +1,11 @@
+uuid: 9b8c3760-8b16-447e-9eb1-2827cbe677c2
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - node.type.other_assets
+id: node.other_assets
+target_entity_type_id: node
+target_bundle: other_assets
+default_langcode: site_default
+language_alterable: false

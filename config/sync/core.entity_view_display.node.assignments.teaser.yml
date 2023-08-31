@@ -1,0 +1,33 @@
+uuid: 76fbd258-9649-45e4-9163-0df83980112d
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.assignments.body
+    - field.field.node.assignments.field_assignment_image
+    - node.type.assignments
+  module:
+    - text
+    - user
+id: node.assignments.teaser
+targetEntityType: node
+bundle: assignments
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_assignment_image: true
+  langcode: true

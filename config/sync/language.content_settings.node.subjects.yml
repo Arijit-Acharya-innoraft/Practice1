@@ -1,0 +1,11 @@
+uuid: 72c61186-804e-46d7-abbb-92d413acc31c
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - node.type.subjects
+id: node.subjects
+target_entity_type_id: node
+target_bundle: subjects
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Restricts permission of the student users.
+ */
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_node_access().
+ */
+function dynamic_permission_node_access(NodeInterface $node, $op, AccountInterface $account) {
+  $uid = $account->id();
+  $user_storage = \Drupal::entityTypeManager()->getStorage('user');
+  $user = $user_storage->load($uid);
+  $roles = $user->getRoles();
+  if (in_array('students', $roles)) {
+    $passing_year = $user->field_passing_year->value;
+    $current_date = date('Y-m-d');
+    if (strtotime($passing_year) - strtotime($current_date) < 0) {
+      return AccessResult::forbidden('Access denied to the restricted page.');
+    }
+  }
+
+}

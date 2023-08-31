@@ -1,0 +1,38 @@
+uuid: 78aaef34-d49f-4f7b-9a7f-e62925b0b0e0
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_assignment_image
+    - node.type.assignments
+  module:
+    - image
+id: node.assignments.field_assignment_image
+field_name: field_assignment_image
+entity_type: node
+bundle: assignments
+label: 'Assignment Image'
+description: 'Insert any image if the question needs.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image

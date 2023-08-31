@@ -1,0 +1,18 @@
+uuid: a2621de3-4a40-465d-a2f2-9d13c84219b2
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Other Assets'
+type: other_assets
+description: 'Field for the inclusion of other assets.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true
