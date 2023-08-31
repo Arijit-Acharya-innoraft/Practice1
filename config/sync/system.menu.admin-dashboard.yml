@@ -1,0 +1,8 @@
+uuid: b3eff39c-2a2f-4f72-9e95-5b45e8d8b079
+langcode: en-gb
+status: true
+dependencies: {  }
+id: admin-dashboard
+label: 'Admin Dashboard'
+description: 'Only visible to admin'
+locked: false

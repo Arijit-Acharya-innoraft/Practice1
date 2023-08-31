@@ -1,0 +1,29 @@
+uuid: b379765b-5cf8-4978-98a1-9b7a02d6d3ea
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_subject
+    - node.type.study_materials
+    - node.type.subjects
+id: node.study_materials.field_subject
+field_name: field_subject
+entity_type: node
+bundle: study_materials
+label: Subject
+description: 'Enter the subject name whose material it is.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      subjects: subjects
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

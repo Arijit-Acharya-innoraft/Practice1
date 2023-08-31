@@ -1,0 +1,25 @@
+uuid: 6dc85d63-2f7c-4d6b-b53f-02f9eb89c0aa
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - node
+id: label1
+label: Label1
+type: 'canonical_entities:node'
+pattern: '/[node:title]'
+selection_criteria:
+  6d2f4167-5ddd-4d12-9d28-ca62e4d1b420:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 6d2f4167-5ddd-4d12-9d28-ca62e4d1b420
+    context_mapping:
+      node: node
+    bundles:
+      assignments: assignments
+      notice: notice
+      other_assets: other_assets
+      study_materials: study_materials
+selection_logic: and
+weight: -5
+relationships: {  }

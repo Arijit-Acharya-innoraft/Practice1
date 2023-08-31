@@ -2,13 +2,14 @@ _core:
   default_config_hash: VDJxTZtQR21qB4lvOq8zszJZLvLKrSPQpdn2E3T71Ww
 langcode: en-gb
 uuid: 949a381a-6f0e-4dfc-a8d8-e1dffb2d8cf9
-name: Drupal
-mail: ''
+name: Practice1
+mail: arijit.acharya@innoraft.com
 slogan: ''
 page:
   403: ''
   404: ''
-  front: /node
+  front: /home
 admin_compact_mode: false
 weight_select_max: 100
 default_langcode: en-gb
+mail_notification: ''

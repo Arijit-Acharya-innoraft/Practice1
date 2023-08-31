@@ -1,0 +1,24 @@
+uuid: e5511c20-dea4-4929-852d-228ceb7eddbb
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.study_materials
+  module:
+    - text
+id: node.study_materials.body
+field_name: body
+entity_type: node
+bundle: study_materials
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

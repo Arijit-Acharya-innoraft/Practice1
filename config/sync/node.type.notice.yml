@@ -1,0 +1,18 @@
+uuid: dea0600d-dea4-497e-b468-40356926b1d9
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Notice
+type: notice
+description: 'Use  <em> notice</em> for posting news for the students.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

@@ -1,9 +1,13 @@
 uuid: 511187d7-3076-405f-a93b-9310af9ef13f
-langcode: en
+langcode: en-gb
 status: true
 dependencies:
   config:
     - core.entity_view_mode.user.compact
+    - field.field.user.user.field_joining_year
+    - field.field.user.user.field_mobile_no
+    - field.field.user.user.field_passing_year
+    - field.field.user.user.field_stream
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
@@ -20,13 +24,17 @@ content:
     type: image
     label: hidden
     settings:
-      image_style: thumbnail
       image_link: content
+      image_style: thumbnail
       image_loading:
         attribute: lazy
     third_party_settings: {  }
     weight: 0
     region: content
 hidden:
+  field_joining_year: true
+  field_mobile_no: true
+  field_passing_year: true
+  field_stream: true
   langcode: true
   member_for: true

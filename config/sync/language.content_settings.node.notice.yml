@@ -1,0 +1,11 @@
+uuid: 7ec686dd-ead4-4a0f-a0a8-1a6ba3e5d7b2
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - node.type.notice
+id: node.notice
+target_entity_type_id: node
+target_bundle: notice
+default_langcode: site_default
+language_alterable: false

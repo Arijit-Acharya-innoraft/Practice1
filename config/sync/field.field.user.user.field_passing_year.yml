@@ -1,0 +1,30 @@
+uuid: 4fcf16eb-a548-443d-b9d0-bfcf21d8ce5a
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_passing_year
+  module:
+    - datetime
+    - multiple_registration
+    - user
+third_party_settings:
+  multiple_registration:
+    user_additional_register_form_required:
+      students: students
+      authenticated: 0
+    user_additional_register_form:
+      students: students
+      authenticated: 0
+id: user.user.field_passing_year
+field_name: field_passing_year
+entity_type: user
+bundle: user
+label: 'Passing Year'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

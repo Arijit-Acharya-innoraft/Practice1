@@ -1,0 +1,20 @@
+uuid: 8eadad1a-42e5-4761-b7ef-881ced7a31ef
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - datetime
+    - user
+id: user.field_passing_year
+field_name: field_passing_year
+entity_type: user
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

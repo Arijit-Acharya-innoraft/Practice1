@@ -1,12 +1,18 @@
 uuid: 205751e5-4bed-4caa-a7df-d442c1fc3475
-langcode: en
+langcode: en-gb
 status: true
 dependencies:
   config:
+    - field.field.user.user.field_joining_year
+    - field.field.user.user.field_mobile_no
+    - field.field.user.user.field_passing_year
+    - field.field.user.user.field_stream
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
+    - datetime
     - image
+    - phone_number
     - user
 _core:
   default_config_hash: FaQ9Ptcpxpg30AtiqRDtl_8zbJArHP1LPfug_s59TOA
@@ -16,20 +22,58 @@ bundle: user
 mode: default
 content:
   account:
-    weight: -10
-    region: content
-  contact:
-    weight: 5
-    region: content
-  language:
     weight: 0
     region: content
-  timezone:
+    settings: {  }
+    third_party_settings: {  }
+  contact:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_joining_year:
+    type: datetime_default
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_mobile_no:
+    type: phone_number_default
+    weight: 1
+    region: content
+    settings:
+      default_country: US
+      placeholder: null
+      phone_size: 60
+      extension_size: 5
+    third_party_settings: {  }
+  field_passing_year:
+    type: datetime_default
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_stream:
+    type: string_textfield
     weight: 6
     region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  language:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  timezone:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   user_picture:
     type: image_image
-    weight: -1
+    weight: 2
     region: content
     settings:
       progress_indicator: throbber
