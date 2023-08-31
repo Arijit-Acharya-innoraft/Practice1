@@ -30,7 +30,7 @@ class ApiController extends ControllerBase {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
     return new static(
@@ -54,14 +54,14 @@ class ApiController extends ControllerBase {
     foreach ($users as $user) {
       if ((strtotime($user->field_passing_year->value)) - (strtotime($current_date)) >= 0) {
         $build[] = [
-          $uid = $user->uid->value,
+          'uid' => $user->uid->value,
           $data[] = [
-            $name = $user->name->value,
-            $mail = $user->mail->value,
-            $stream = $user->field_stream->value,
-            $mobile = $user->field_mobile_no->value,
-            $joining_year = $user->field_joining_year->value,
-            $passing_year = $user->field_passing_year->value,
+            'name' => $user->name->value,
+            'mail' => $user->mail->value,
+            'stream' => $user->field_stream->value,
+            'mobile' => $user->field_mobile_no->value,
+            'joining_year' => $user->field_joining_year->value,
+            'passing_year' => $user->field_passing_year->value,
           ],
         ];
       }
@@ -104,14 +104,14 @@ class ApiController extends ControllerBase {
     foreach ($users as $user) {
       if ((strtotime($user->field_passing_year->value)) - (strtotime($current_date)) >= 0) {
         $build[] = [
-          $uid = $user->uid->value,
+          'uid' => $user->uid->value,
           $data[] = [
-            $name = $user->name->value,
-            $mail = $user->mail->value,
-            $stream = $user->field_stream->value,
-            $mobile = $user->field_mobile_no->value,
-            $joining_year = $user->field_joining_year->value,
-            $passing_year = $user->field_passing_year->value,
+            'name' => $user->name->value,
+            'mail' => $user->mail->value,
+            'stream' => $user->field_stream->value,
+            'mobile' => $user->field_mobile_no->value,
+            'joining_year' => $user->field_joining_year->value,
+            'passing_year' => $user->field_passing_year->value,
           ],
         ];
       }
@@ -132,7 +132,6 @@ class ApiController extends ControllerBase {
    */
   public function buildOnDoubleParameter($parameter1, $parameter2) {
 
-    $store = $parameter1;
     $joining_date_parameter = [];
     $stream_parameter = [];
 
@@ -167,14 +166,14 @@ class ApiController extends ControllerBase {
     foreach ($users as $user) {
       if ((strtotime($user->field_passing_year->value)) - (strtotime($current_date)) >= 0) {
         $build[] = [
-          $uid = $user->uid->value,
+          'uid' => $user->uid->value,
           $data[] = [
-            $name = $user->name->value,
-            $mail = $user->mail->value,
-            $stream = $user->field_stream->value,
-            $mobile = $user->field_mobile_no->value,
-            $joining_year = $user->field_joining_year->value,
-            $passing_year = $user->field_passing_year->value,
+            'name' => $user->name->value,
+            'mail' => $user->mail->value,
+            'stream' => $user->field_stream->value,
+            'mobile' => $user->field_mobile_no->value,
+            'joining_year' => $user->field_joining_year->value,
+            'passing_year' => $user->field_passing_year->value,
           ],
         ];
       }

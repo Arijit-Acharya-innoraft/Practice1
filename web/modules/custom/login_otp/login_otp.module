@@ -24,18 +24,23 @@ function login_otp_form_alter(array &$form, FormStateInterface $formState, $form
       '#type' => 'email',
       '#title' => 'Email',
       '#required' => TRUE,
-      '#description' => 'Enter your mail',
+      '#description' => t('Enter your mail'),
     ];
-    $form['actions']['submit']['#submit'][] = 'custom_submit_method';
+    $form['actions']['submit']['#submit'][] = 'login_otp_custom_submit_method';
 
     return $form;
   }
 }
 
 /**
+ * Custom submit method for handling form submission.
  *
+ * @param array $form
+ *   The form array.
+ * @param \Drupal\Core\Form\FormStateInterface $formState
+ *   The form state object.
  */
-function custom_submit_method(array &$form, FormStateInterface $formState) {
+function login_otp_custom_submit_method(array &$form, FormStateInterface $formState) {
   $email = $formState->getValue('email');
   $query = Database::getConnection()->select('users_field_data', 'u');
   $uids = $query->fields('u', ['uid'])
@@ -43,7 +48,7 @@ function custom_submit_method(array &$form, FormStateInterface $formState) {
     ->execute()
     ->fetchCol();
   $uid = $uids[0];
-  $store = generate();
+  $store = login_otp_generate();
   $otp = $store[0];
   $created = $store[1];
 
@@ -54,29 +59,29 @@ function custom_submit_method(array &$form, FormStateInterface $formState) {
     ->execute()
     ->fetchAll();
   if (($results[0]->created) == NULL) {
-    insertData($otp, $created, $uid);
+    login_otp_insert_data($otp, $created, $uid);
   }
   else {
-    alterData($otp, $created, $uid);
+    login_otp_alter_data($otp, $created, $uid);
   }
-  send_mail($otp, $email);
+  login_otp_send_mail($otp, $email);
   $response = new RedirectResponse('/otp_validation/' . $uid);
   $response->send();
 }
 
 /**
- *
+ * Generates otp.
  */
-function generate() {
+function login_otp_generate() {
   $otp = rand(1000, 9999);
   $time = time();
   return [$otp, $time];
 }
 
 /**
- *
+ * Inserts data for new user.
  */
-function insertData($otp, $created, $uid) {
+function login_otp_insert_data($otp, $created, $uid) {
   $values = [
     'uid' => $uid,
     'otp' => $otp,
@@ -90,9 +95,9 @@ function insertData($otp, $created, $uid) {
 }
 
 /**
- *
+ * Updates the created time,otp,matched value for existing user.
  */
-function alterData($otp, $created, $uid) {
+function login_otp_alter_data($otp, $created, $uid) {
   $values = [
     'otp' => $otp,
     'created' => $created,
@@ -105,9 +110,9 @@ function alterData($otp, $created, $uid) {
 }
 
 /**
- *
+ * Send mail to the user.
  */
-function send_mail($otp, $email) {
+function login_otp_send_mail($otp, $email) {
   $mailManager = \Drupal::service('plugin.manager.mail');
   $module = 'login_otp';
   $key = 'otp';

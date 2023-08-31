@@ -15,7 +15,6 @@ function delete_feature_cron() {
   // Deleting those nodes whose event has already occured.
   $notice_events = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'notice']);
   foreach ($notice_events as $notice_event) {
-    $nid = $notice_event->nid->value;
     $event_date = $notice_event->field_event_date->value;
     $diff = strtotime($event_date) - strtotime($current_date);
     if ($diff < 0) {

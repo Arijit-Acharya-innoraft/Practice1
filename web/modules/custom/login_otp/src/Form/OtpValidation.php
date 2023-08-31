@@ -10,25 +10,40 @@ use Drupal\login_otp\Services\OtpService;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- *
+ * A class for validating the otp entered by the user.
  */
 class OtpValidation extends FormBase {
 
   /**
-   * @var [type]
+   * RouteMatchInterface instance.
+   *
+   * @var \Drupal\Core\Routing\RouteMatchInterface
    */
   protected $routeMatch;
+
   /**
-   * @var [type]
+   * OtpService instance.
+   *
+   * @var \Drupal\login_otp\Services\OtpService
    */
   protected $otpService;
+
   /**
-   * @var [type]
+   * EntityTypeManager instance.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManager
    */
   protected $entityManager;
 
   /**
-   * {@inheritdoc}
+   * Class constructor.
+   *
+   * @param \Drupal\Core\Routing\RouteMatchInterface $routeMatch
+   *   The route match service.
+   * @param \Drupal\login_otp\Services\OtpService $otp_service
+   *   The OTP service.
+   * @param \Drupal\Core\Entity\EntityTypeManager $entity_type_manager
+   *   The entity type manager service.
    */
   public function __construct(RouteMatchInterface $routeMatch, OtpService $otp_service, EntityTypeManager $entity_type_manager) {
     $this->routeMatch = $routeMatch;
@@ -91,7 +106,15 @@ class OtpValidation extends FormBase {
   }
 
   /**
+   * Check if the entered OTP matches the stored OTP and is within time limits.
    *
+   * @param string $otp
+   *   The entered OTP.
+   * @param int $uid
+   *   The user ID.
+   *
+   * @return string
+   *   The validation result message.
    */
   public function checkOtp($otp, $uid) {
 
